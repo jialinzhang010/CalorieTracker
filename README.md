@@ -46,10 +46,8 @@ An Example Food:
 {
   user: // a reference to a User object
   diet: // a reference to a diet object
-  name: "beef", // the user will not be able to enter texts. They will have a list to choose. 
-  category: "meat",
-  quantity: 100,
-  unit: "g"
+  info:  // a refernce to a foodInfo object. the user will not be able to enter texts. They will have a list to choose. 
+  quantity: 100
 }
 ```
 
@@ -62,7 +60,16 @@ An Example Exercise:
   duration: "0h 20min 0s",
 }
 ```
+An Example FoodInfo:
 
+```javascript
+{
+    name: 'beef',
+    category: 'meat',
+    calorie: 250.5,   // kcal/100g
+    unit: 'g'
+}
+```
 
 ## [Link to Commented First Draft Schema](db.mjs) 
 
