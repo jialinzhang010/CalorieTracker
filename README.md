@@ -129,7 +129,7 @@ today/suggestion - page for showing total calorie intake and burned today and th
     * I will follow the instructions in `https://developer.chrome.com/blog/headless-karma-mocha-chai/`.
     * Headless Chrome is a way to run the Chrome browser without the full browser UI. 
     * I'm using Headless Chrome because my JavaScript tests will be executed in the same environment as users of your site.
-    * I will use Karma as a runner and Mocha+Chai for authoring tests.
+    * I will use Karma as a runner and Mocha+Chai for authoring tests.  
 8 points total out of 8 required points
 
 ## [Link to Initial Main Project File](app.mjs) 
