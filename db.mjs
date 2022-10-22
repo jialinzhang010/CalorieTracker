@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
     height: {type: Number, required: true},
     weight: {type: Number, required: true},
     diets: [DietSchema],
-    exercise: ExerciseSchema,
+    exercise: [ExerciseSchema],
     calorie_intake: {type: Number, required: false},
     calorie_burned: {type: 200, required: false}
 })
