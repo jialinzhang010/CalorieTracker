@@ -1,117 +1,134 @@
-The content below is an example project proposal / requirements document. Replace the text below the lines marked "__TODO__" with details specific to your project. Remove the "TODO" lines.
-
-(__TODO__: your project name)
-
-# Shoppy Shoperson 
+# Calories Tracker
 
 ## Overview
 
-(__TODO__: a brief one or two paragraph, high-level description of your project)
-
-Remembering what to buy at the grocery store is waaaaay too difficult. Also, shopping for groceries when you're hungry leads to regrettable purchases. Sooo... that's where Shoppy Shoperson comes in!
-
-Shoppy Shoperson is a web app that will allow users to keep track of multiple grocery lists. Users can register and login. Once they're logged in, they can create or view their grocery list. For every list that they have, they can add items to the list or cross off items.
-
+Calories Tracker is a web app that will allow users to keep track of how many calories they get and burned everyday. Users can register and login. Users have to enter their gender, weight, and height when during the registration. Once they're logged in, they can record how much food they ate and how much exercise they took on one day, and the corresponding calories will be calculated. Then the app will give suggestion to the users based on their personal data, such as modifying their recipe or suggesting them to do more exercise.
 
 ## Data Model
 
-(__TODO__: a description of your application's data and their relationships to each other) 
 
-The application will store Users, Lists and Items
+The application will store Users, Diets, Food, Exercise, Sport
 
-* users can have multiple lists (via references)
-* each list can have multiple items (by embedding)
-
-(__TODO__: sample documents)
+* users can have multiple diets everyday
+* each Diet can have multiple kinds of food (by embedding)
+* Time of exercise everyday is at the discretion of users.
 
 An Example User:
 
 ```javascript
 {
-  username: "shannonshopper",
-  hash: // a password hash,
-  lists: // an array of references to List documents
+  username: "username123",
+  password: "mypassword123",
+  gender: "male",
+  age: 18,
+  height: 175,
+  weight: 60,
+  diets: // an array of references to Diets documents
+  exercise: // an array of references to Excercise documents
+  calorie_intake: 2000,
+  calorie_burned: 200
 }
 ```
 
-An Example List with Embedded Items:
+An Example Diet with Embedded Items:
 
 ```javascript
 {
   user: // a reference to a User object
-  name: "Breakfast foods",
-  items: [
-    { name: "pancakes", quantity: "9876", checked: false},
-    { name: "ramen", quantity: "2", checked: true},
-  ],
-  createdAt: // timestamp
+  name: "Breakfast",
+  food: // an array of food
+  
+}
+```
+An Example Food:
+
+```javascript
+{
+  user: // a reference to a User object
+  diet: // a reference to a diet object
+  name: "beef", // the user will not be able to enter texts. They will have a list to choose. 
+  category: "meat",
+  quantity: 100,
+  unit: "g"
+}
+```
+
+An Example Exercise:
+
+```javascript
+{
+  user: // a reference to a User object
+  name: "jogging", // the user will not be able to enter texts. They will have a list to choose. 
+  duration: "0h 20min 0s",
 }
 ```
 
 
 ## [Link to Commented First Draft Schema](db.mjs) 
 
-(__TODO__: create a first draft of your Schemas in db.mjs and link to it)
 
 ## Wireframes
+/sign_up - page for signing up
 
-(__TODO__: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc.)
+![sign up](documentation/sign_up.png)
 
-/list/create - page for creating a new shopping list
+/login - page for login
 
-![list create](documentation/list-create.png)
+![login](documentation/login.png)
 
-/list - page for showing all shopping lists
+/today - page for showing today's activities
 
-![list](documentation/list.png)
+![today](documentation/today.png)
 
-/list/slug - page for showing specific shopping list
+today/new_diet - page for adding a new diet
 
-![list](documentation/list-slug.png)
+![new diet](documentation/new_diet.png)
+
+today/diet_type - page for showing a specific diet
+
+![new diet](documentation/breakfast.png)
+
+today/add_exercise - page for adding new exercise
+
+![add exercise](documentation/add_exercise.png)
+
+today/suggestion - page for showing total calorie intake and burned today and the suggrestion
+
+![suggestion](documentation/suggestion.png)
+
 
 ## Site map
 
-(__TODO__: draw out a site map that shows how pages are related to each other)
-
-Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia/commons/2/20/Sitemap_google.jpg), but you can create one without the screenshots, drop shadows, etc. ... just names of pages and where they flow to.
+![site map](documentation/site_map.png)
 
 ## User Stories or Use Cases
 
-(__TODO__: write out how your application will be used through [user stories](http://en.wikipedia.org/wiki/User_story#Format) and / or [use cases](https://en.wikipedia.org/wiki/Use_case))
-
 1. as non-registered user, I can register a new account with the site
 2. as a user, I can log in to the site
-3. as a user, I can create a new grocery list
-4. as a user, I can view all of the grocery lists I've created in a single list
-5. as a user, I can add items to an existing grocery list
-6. as a user, I can cross off items in an existing grocery list
+3. as a user, I can create a new diet
+4. as a user, I can view all of the diets I've created
+5. as a user, I can view all of the exercise I've created
+6. as a user, I can view all of the food I've added to an existing diet
+7. as a user, I can add food to an existing diet
+8. as a user, I can view the calorie intake and burned and the customized suggestion on my diet.
 
 ## Research Topics
 
-(__TODO__: the research topics that you're planning on working on along with their point values... and the total points of research topics listed)
-
-* (5 points) Integrate user authentication
-    * I'm going to be using passport for user authentication
-    * And account has been made for testing; I'll email you the password
-    * see <code>cs.nyu.edu/~jversoza/ait-final/register</code> for register page
-    * see <code>cs.nyu.edu/~jversoza/ait-final/login</code> for login page
-* (4 points) Perform client side form validation using a JavaScript library
-    * see <code>cs.nyu.edu/~jversoza/ait-final/my-form</code>
-    * if you put in a number that's greater than 5, an error message will appear in the dom
-* (5 points) vue.js
-    * used vue.js as the frontend framework; it's a challenging library to learn, so I've assigned it 5 points
-
-10 points total out of 8 required points (___TODO__: addtional points will __not__ count for extra credit)
-
+* (3 points) Perform client side form validation using custom JavaScript or JavaScript library
+    *  Client side form validation ensures all required form controls are filled out, in the correct format before submitting data to the server,
+    * Client side form validation helps ensure data submitted matches the requirements set forth in the various form controls.
+    * The user can fix the invalid data staight away to prevent sending bad data to server.
+* (5 points) Automated functional testing for all of your routes using Headless Chrome
+    * I will follow the instructions in `https://developer.chrome.com/blog/headless-karma-mocha-chai/`.
+    * Headless Chrome is a way to run the Chrome browser without the full browser UI. 
+    * I'm using Headless Chrome because my JavaScript tests will be executed in the same environment as users of your site.
+    * I will use Karma as a runner and Mocha+Chai for authoring tests.
+8 points total out of 8 required points
 
 ## [Link to Initial Main Project File](app.mjs) 
 
-(__TODO__: create a skeleton Express application with a package.json, app.mjs, views folder, etc. ... and link to your initial app.mjs)
-
 ## Annotations / References Used
 
-(__TODO__: list any tutorials/references/etc. that you've based your code off of)
-
-1. [passport.js authentication docs](http://passportjs.org/docs) - (add link to source code that was based on this)
-2. [tutorial on vue.js](https://vuejs.org/v2/guide/) - (add link to source code that was based on this)
+1. [Client-side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
+2. [tutorial on Headless Chrome](https://developer.chrome.com/blog/headless-karma-mocha-chai/)
 
