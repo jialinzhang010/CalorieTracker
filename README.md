@@ -1,16 +1,16 @@
-# Calories Tracker
+# Calorie Tracker
 
 ## Overview
 
-Calories Tracker is a web app that will allow users to keep track of how many calories they get and burned everyday. Users can register and login. Users have to enter their gender, weight, and height when during the registration. Once they're logged in, they can record how much food they ate and how much exercise they took on one day, and the corresponding calories will be calculated. Then the app will give suggestion to the users based on their personal data, such as modifying their recipe or suggesting them to do more exercise.
+Calories Tracker is a web app that will allow users to keep track of their intake of calories and how much they burned everyday. Users can register and login. When signing up, users have to enter their gender, weight, and height. Once they're logged in, they can record how much food they ate and how much exercise they took on one day, and then the users can view the calculated calories. Then the app will give suggestion to the users as well, such as food bias.
 
 ## Data Model
 
+The application will store Users, Diets, Food, and Exercise. There is also a database which stores the information of food.
 
-The application will store Users, Diets, Food, Exercise, Sport
-
-* users can have multiple diets everyday
-* each Diet can have multiple kinds of food (by embedding)
+* users can have multiple diets everyday.
+* each Diet consists of different kinds of food(by embedding).
+* The user will not be able to enter texts when selecting food. They will have a list of food to choose. 
 * Time of exercise everyday is at the discretion of users.
 
 An Example User:
@@ -46,7 +46,7 @@ An Example Food:
 {
   user: // a reference to a User object
   diet: // a reference to a diet object
-  info:  // a refernce to a foodInfo object. the user will not be able to enter texts. They will have a list to choose. 
+  info:  // a refernce to a foodInfo object
   quantity: 100
 }
 ```
