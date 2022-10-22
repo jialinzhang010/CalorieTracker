@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 const UserSchema = new mongoose.Schema({
     username: {type: String, requried: true},
     password: {type: String, required: true},
+    // the following keys are used to calculate the recommend calorie intake.
     gender: {type: String, required: true},
     age: {type: Number, required: true},
     height: {type: Number, required: true},
@@ -15,17 +16,20 @@ const UserSchema = new mongoose.Schema({
 const DietSchema = new mongoose.Schema({
     user: UserSchema,
     name: {type: String, required: true},
+    // diet consists of food
     food: [FoodSchema]
 })
 const FoodSchema = new mongoose.Schema({
     user: UserSchema,
     diet: DietSchema,
-    info: FoodInfoSchema,
+    // retrieve information of this food from database which stores food information.
+    info: FoodInfoSchema,      
     quantity: {type: Number, required: true},
 })
 const ExerciseSchema = new mongoose.Schema({
     user: UserSchema,
     name: {type: String, required: true},
+    // time spent on this exercise
     duration: {type: String, required: true}
 })
 const FoodInfoSchema = new mongoose.Schema({
