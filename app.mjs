@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.urlencoded({ extended: false }));
 app.use(
     session({
-        secret: "my secret",
+        secret: "secret",
         resave: false,
         saveUninitialized: true
     })

@@ -2,10 +2,10 @@
   "name": "final-project-jialinzhang010",
   "version": "1.0.0",
   "description": "Calories Tracker is a web app that will allow users to keep track of how many calories they get and burned everyday. Users can register and login. Users have to enter their gender, weight, and height when during the registration. Once they're logged in, they can record how much food they ate and how much exercise they took on one day, and the corresponding calories will be calculated. Then the app will give suggestion to the users based on their personal data, such as modifying their recipe or suggesting them to do more exercise.",
-  "main": "index.js",
+  "main": "app.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.mjs"
+    "start": "node app.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
