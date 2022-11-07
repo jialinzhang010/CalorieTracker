@@ -9,6 +9,7 @@ import {readFile} from 'fs';
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+app.set('view engine', 'hbs');
 app.use(express.urlencoded({ extended: false }));
 app.use(
     session({
@@ -18,7 +19,7 @@ app.use(
     })
 );
 const Diet = mongoose.model("Diet");
-app.set('view engine', 'hbs');
+
 
 app.get("/test", (req, res) => {
     res.render("test");
