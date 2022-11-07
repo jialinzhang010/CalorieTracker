@@ -4,7 +4,8 @@
   "description": "Calories Tracker is a web app that will allow users to keep track of how many calories they get and burned everyday. Users can register and login. Users have to enter their gender, weight, and height when during the registration. Once they're logged in, they can record how much food they ate and how much exercise they took on one day, and the corresponding calories will be calculated. Then the app will give suggestion to the users based on their personal data, such as modifying their recipe or suggesting them to do more exercise.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.mjs"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "mongoose": "^6.6.7",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "serve": "^14.0.1"
   }
 }
