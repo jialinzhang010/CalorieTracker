@@ -14,10 +14,9 @@ const UserSchema = new mongoose.Schema({
 const DietSchema = new mongoose.Schema({
     dietName: {type: String, required: true},
     // diet consists of food
-    food: {type: String, required: true}
-    // food: {type: mongoose.Schema.Types.ObjectId, ref: "Food"},
+    food: []
     // user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
-    // url: {type: String, required: true}
+
 })
 const FoodSchema = new mongoose.Schema({
     // retrieve information of this food from database which stores food information.
