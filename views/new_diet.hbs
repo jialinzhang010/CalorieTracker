@@ -22,9 +22,11 @@
         </select>
 
         <label for="number">quantity: </label>
+        {{!-- min="1" is client side validation --}}
         <input type="number" id="number" name="quantity" value="1" min="1"><br>
 
         <p>unit:</p>
+        {{!-- required is client side validation --}}
         <input type="radio" id="unit" name="unit" required value="g">
         <label for="unit">g</label><br>
         <input type="radio" id="unit" name="unit" required value="ml">
