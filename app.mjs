@@ -4,13 +4,16 @@ import session from 'express-session';
 import { fileURLToPath } from 'url';
 import './db.mjs';
 import mongoose from 'mongoose';
-import {readFile} from 'fs';
+import './public/foodInfo.mjs';
+import fetch from 'node-fetch';
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.set('view engine', 'hbs');
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, '/public/')));
+app.use(express.json({limit: "1mb"}))
 app.use(
     session({
         secret: "secret",
@@ -21,24 +24,24 @@ app.use(
 const Diet = mongoose.model("Diet");
 const Food = mongoose.model("Food");
 let dietName;
-
-app.get("/test", (req, res) => {
-    res.render("test");
-})
-
+let dietId;
 app.get("/", (req, res) => {
     Diet.find({}, (err, diets) => {
         res.render("index", {diets: diets});
     })
 })
-app.post("/", (req, res) => {
+app.post("/", async (req, res) => {
     dietName = req.body.dietName;
+    const diets = await Diet.find({dietName: dietName});
+    const id = diets.length + 1 || 1;
     const newDiet = new Diet({
-        dietName: dietName
+        dietName: dietName,
+        food: [],
+        id: id
     });
     newDiet.save((err) => {
         if (!err){
-        req.header.dietId = newDiet._id;
+        dietId = newDiet._id;
         res.redirect("/new_diet");
         }else{
             console.log(err)
@@ -46,37 +49,41 @@ app.post("/", (req, res) => {
     })
 })
 app.get("/new_diet", async(req, res) => {
-    const diet = await Diet.findOne({_id: req.header.dietId});
-    const food = diet.food;
-    console.log(food)
-    res.render("new_diet", {dietName: diet.dietName})
+    const diet = await Diet.findOne({_id: dietId});
+    if (diet){
+        const food = diet.food;
+        res.render("new_diet", {dietName: diet.dietName});
+    }else{
+
+        res.redirect('/');
+    }
     
 })
-app.post("/new_diet", (req, res) => {
-    const newFood = new Food ({
-        foodName: req.body.food, quantity: req.body.quantity, unit: req.body.unit
-    });
-    newFood.save((err, food) => {
-        if (!err) {
-            Diet.findOne({_id: req.header.dietId}).populate("food").exec((err, diet)=>{
-                if (!err){
-                    diet.food.push(newFood._id);
-                    diet.save();
-                }else{
-                    console.log(err)
-                }
-                
+app.post("/new_diet", async (req, res) => {
+    const diet = await Diet.findOne({_id: dietId});
+    req.body.diets.forEach(async food => {
+            const newFood = new Food({
+                foodName: food.foodName,
+                quantity: food.quantity
             })
-            res.redirect("/new_diet");
-        }else{
-            console.log(err)
-        res.redirect("/new_diet");
-        }
+            diet.food.push(newFood._id);
+            await newFood.save();
     });
-   
-    
+    diet.save();
 })
-app.get('/:slug', (req, res) => {
-    Diet.find({})
+
+app.get('/:dietName', async (req, res) => {
+    const temp = req.params.dietName.split('_');
+    const dietName = temp[0];
+    const id = temp[1];
+    const wantedDiet = await Diet.findOne({dietName: dietName, id: id});
+    let wantedFood = wantedDiet.food;
+    for (let i = 0; i < wantedFood.length; i++) {
+        const foodInfo = await Food.findOne({_id: wantedFood[i]})
+        wantedFood[i] = foodInfo;
+    }
+   
+     res.render('diet-detail', {dietName: dietName, foods: wantedFood});
+ 
 })
 app.listen(process.env.PORT || 3000);

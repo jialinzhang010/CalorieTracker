@@ -14,15 +14,15 @@ const UserSchema = new mongoose.Schema({
 const DietSchema = new mongoose.Schema({
     dietName: {type: String, required: true},
     // diet consists of food
-    food: []
+    food: [],
+    id: {type: Number, required: true}
     // user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
 
 })
 const FoodSchema = new mongoose.Schema({
     // retrieve information of this food from database which stores food information.
     foodName: {type: String, required: true},
-    quantity: {type: Number, required: true},
-    unit: {type: String, required: true}
+    quantity: {type: Number, required: true}
 })
 
 const FoodInfoSchema = new mongoose.Schema({
@@ -58,39 +58,3 @@ if (process.env.NODE_ENV === 'PRODUCTION') {
  dbconf = 'mongodb://localhost/jz4253';
 }
 mongoose.connect(dbconf);
-// const FoodInfo = mongoose.model('FoodInfo');
-// const beef = new FoodInfo({
-//     name: 'beef',
-//     category: 'meat',
-//     calorie: 250.5,
-//     unit: 'g'
-// })
-// beef.save();
-// const lamb = new FoodInfo({
-//     name: 'lamb',
-//     category: 'meat',
-//     calorie: 294,
-//     unit: 'g'
-// })
-// lamb.save();
-// const pork = new FoodInfo({
-//     name: 'pork',
-//     category: 'meat',
-//     calorie: 242.1,
-//     unit: 'g'
-// })
-// pork.save();
-// const chicken = new FoodInfo({
-//     name: 'chicken',
-//     category: 'meat',
-//     calorie: 239,
-//     unit: 'g'
-// })
-// chicken.save();
-// const fish = new FoodInfo({
-//     name: 'fish',
-//     category: 'meat',
-//     calorie: 205.8,
-//     unit: 'g'
-// })
-// fish.save();

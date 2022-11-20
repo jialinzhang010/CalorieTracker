@@ -1,40 +1,27 @@
-<p>
-<form method="POST" action="/new_diet">
+<body>
+    <script type="module" src="/main.js">
+    </script>
+    <h2>You are having: {{ dietName }}</h2>
+    <p id="foodList"></p>
+
+    <label>food: </label>
+    <select id="food">
+        <option value="chicken g">chicken g</option>
+        <option value="beef g">beef g</option>
+        <option value="pork g">pork g</option>
+        <option value="lettuce g">lettuce g</option>
+        <option value="tomatoes g">tomatoes g</option>
+        <option value="potatoes g">potatoes g</option>
+        <option value="spanich g">spanich g</option>
+    </select>
+
+    <label>quantity: </label>
+    <input type="number" id="quantity" value="1" min="1"><br>
+
+    <button type="button" id="dietBtn">Add to diet</button>
     <div>
-        <h2>You are having: {{dietName}}</h2>
-        <ul>
-        {{#each foods as |food|}}
-        <li>{{food.quantity}} {{food.unit}} {{food.foodName}}</li>
-        {{/each}}
-        </ul>
-        <label for="food">food: </label>
-        <select id="food" name="food">
-            <option value="hamburger">hamburger</option>
-            <option value="milk">milk</option>
-            <option value="bread">bread</option>
-            <option value="chicken">chicken</option>
-            <option value="beef">beef</option>
-            <option value="pork">pork</option>
-            <option value="lettuce">lettuce</option>
-            <option value="tomatoes">tomatoes</option>
-            <option value="potatoes">potatoes</option>
-            <option value="cola">cola</option>
-        </select>
-
-        <label for="number">quantity: </label>
-        {{!-- min="1" is client side validation --}}
-        <input type="number" id="number" name="quantity" value="1" min="1"><br>
-
-        <p>unit:</p>
-        {{!-- required is client side validation --}}
-        <input type="radio" id="unit" name="unit" required value="g">
-        <label for="unit">g</label><br>
-        <input type="radio" id="unit" name="unit" required value="ml">
-        <label for="unit">ml</label><br>
-        <input type="radio" id="unit" name="unit" required value="/">
-        <label for="unit">/</label><br>
-       
+        <button onclick="location.href='/';" id="todayBtn">Add to Today</button>
     </div>
-    <div><input type="submit" value="Add To Today"></div>
+
 </form>
-</p>
+</body>
