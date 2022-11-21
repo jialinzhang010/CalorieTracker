@@ -4,7 +4,10 @@ let quantity;
 let data = {diets : []};
 function onClick() {
   const div = document.createElement("div");
-  const quantity = document.getElementById("quantity").value;
+  let quantity = document.getElementById("quantity").value;
+  if (quantity === "") {
+    quantity = 50;
+  }
   let foodUnit = document.getElementById("food").value;
   foodUnit = foodUnit.split(" ");
   food = foodUnit[0];

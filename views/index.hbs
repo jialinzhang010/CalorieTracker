@@ -1,13 +1,22 @@
-<p>
-<h1>Diets:</h1>
-<ul>
-    {{#each diets as |diet|}}
-    <li><a href="/{{diet.dietName}}_{{diet.id}}">{{diet.dietName}}</a></li>
-    {{/each}}
-</ul>
-<form method = "POST" action="/">
-<label id="diet">I'm having a new diet:</label>
-<input id="diet" type="text" name="dietName" value="">
-<input type="submit" value="Add">
-</form>
-</p>
+<body>
+
+    <form method="POST" action="/" class="form-horizontal" role="form">
+        <div id="diet"><big>I'm having a <b>new</b> diet!</big></div>
+        <div class="input group offset-md-4 col-md-4">
+            <input class="form-control" id="diet" type="text" required name="dietName" value=""
+                placeholder="please enter the name of your diet">
+        </div>
+        <div class="col-auto">
+            <input type="submit" value="Add" class="btn btn-primary">
+        </div>
+
+    </form>
+    <div></div>
+<div >
+    <ul class="list-unstyled">
+        {{#each diets as |diet|}}
+        <li><a href="/{{diet.dietName}}_{{diet.id}}">{{diet.dietName}}</a></li>
+        {{/each}}
+    </ul>
+</div>
+</body>

@@ -1,6 +1,8 @@
 <body>
     <h2>{{dietName}}</h2>
     {{#each foods as |food|}}
+    <ul class="list-unstyled">
     <li>{{food.foodName}} * {{food.quantity}}</li>
     {{/each}}
+    </ul>
 </body>

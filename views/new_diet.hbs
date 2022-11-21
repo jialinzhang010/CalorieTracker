@@ -2,26 +2,28 @@
     <script type="module" src="/main.js">
     </script>
     <h2>You are having: {{ dietName }}</h2>
-    <p id="foodList"></p>
-
-    <label>food: </label>
-    <select id="food">
-        <option value="chicken g">chicken g</option>
-        <option value="beef g">beef g</option>
-        <option value="pork g">pork g</option>
-        <option value="lettuce g">lettuce g</option>
-        <option value="tomatoes g">tomatoes g</option>
-        <option value="potatoes g">potatoes g</option>
-        <option value="spanich g">spanich g</option>
-    </select>
-
-    <label>quantity: </label>
-    <input type="number" id="quantity" value="1" min="1"><br>
-
-    <button type="button" id="dietBtn">Add to diet</button>
+    <div id="foodList"></div>
+    <div class="form-horizontal col-md-2 offset-md-5" role="form">
+        <label for="food">food: </label>
+        <select class="form-control" id="food">
+            <option value="chicken g">chicken g</option>
+            <option value="beef g">beef g</option>
+            <option value="pork g">pork g</option>
+            <option value="lettuce g">lettuce g</option>
+            <option value="tomatoes g">tomatoes g</option>
+            <option value="potatoes g">potatoes g</option>
+            <option value="spanich g">spanich g</option>
+        </select>
+    </div>
+    <div class="input group offset-md-5 col-md-2">
+    <label for="quantity">quantity: </label>
+    <input class="form-control" type="number" id="quantity" value="1" min="1" oninput="validity.valid||(value='');">
+    <p class="text-secondary">If you do not enter anything for quantity, it will be set to 50 automatically</p>
+    </div>
+    <button id="dietBtn" class="btn btn-primary" type="button">Add to diet</button>
     <div>
-        <button onclick="location.href='/';" id="todayBtn">Add to Today</button>
+        <button class="btn btn-primary btn-lg" onclick="location.href='/';" id="todayBtn">Add to Today</button>
     </div>
 
-</form>
+    </form>
 </body>

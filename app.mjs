@@ -5,7 +5,6 @@ import { fileURLToPath } from 'url';
 import './db.mjs';
 import mongoose from 'mongoose';
 import './public/foodInfo.mjs';
-import fetch from 'node-fetch';
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
