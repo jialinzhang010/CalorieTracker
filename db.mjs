@@ -2,14 +2,9 @@ import mongoose from 'mongoose'
 
 const UserSchema = new mongoose.Schema({
     username: {type: String, requried: true},
-    password: {type: String, required: true},
+    password: {type: String, required: true}
     // the following keys are used to calculate the recommended calorie intake.
-    gender: {type: String, required: true},
-    age: {type: Number, required: true},
-    height: {type: Number, required: true},
-    weight: {type: Number, required: true},
-    diets: [{type: mongoose.Schema.Types.ObjectId, ref: "Diet"}],
-    calorie_intake: {type: Number, required: false},
+    
 })
 const DietSchema = new mongoose.Schema({
     dietName: {type: String, required: true},
