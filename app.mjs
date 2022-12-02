@@ -88,6 +88,9 @@ app.post("/new_diet", async (req, res) => {
         diet.food.push(newFood._id);
         await newFood.save();
     });
+    if (diet.food === []) {
+        return;
+    }
     await diet.save();
     calcCalorie(diet._id);
     dietId = 0;
