@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", main);
 let food;
 let quantity;
-const data = {diets : []};
+const data = { diets: [] };
 function onClick() {
   const li = document.createElement("li");
   let quantity = document.getElementById("quantity").value;
@@ -10,7 +10,7 @@ function onClick() {
   }
   const food = document.getElementById("food").value;
   li.textContent = quantity + "g" + " * " + food;
-  const foodDetail = {foodName: food, quantity: quantity};
+  const foodDetail = { foodName: food, quantity: quantity };
   data.diets.push(foodDetail);
   li.classList.add("list-group-item");
   li.classList.add("bg-transparent");
@@ -18,17 +18,17 @@ function onClick() {
   foodList.appendChild(li);
 }
 function inputOnClick() {
-  fetch('/new_diet', {
+  fetch("/new_diet", {
     method: "POST",
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(data)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
   });
 }
 function main() {
   const btn = document.querySelector("#dietBtn");
-  const inputBtn = document.querySelector('#todayBtn');
+  const inputBtn = document.querySelector("#todayBtn");
   btn.addEventListener("click", onClick);
   inputBtn.addEventListener("click", inputOnClick);
 }
-export {food, quantity};
+export { food, quantity };
 main();
