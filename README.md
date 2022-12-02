@@ -82,6 +82,7 @@ An Example FoodInfo:
 5. as a user, I can view all of the food I've added to an existing diet
 6. as a user, I can view the total calorie intake from all of the diets.
 7. as a user, I can search the information of the an ingredient.
+8. as a user, I can filter the diets to check diets with calorie intake higher than the number you entered.
 
 ## Research Topics
 
