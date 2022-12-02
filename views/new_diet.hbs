@@ -1,29 +1,39 @@
-<body>
+<div>
     <script type="module" src="/main.js">
     </script>
     <h2>You are having: {{ dietName }}</h2>
-    <div id="foodList"></div>
-    <div class="form-horizontal col-md-2 offset-md-5" role="form">
-        <label for="food">food: </label>
+
+    <div class="form-horizontal input-group input-group-lg w-50 offset-md-3">
+        <input class="form-control" type="number" id="quantity" value="100" min="1"
+            oninput="validity.valid||(value='');">
+        <div class="form-control input-group-text">grams of</div>
         <select class="form-control" id="food">
-            <option value="chicken g">chicken g</option>
-            <option value="beef g">beef g</option>
-            <option value="pork g">pork g</option>
-            <option value="lettuce g">lettuce g</option>
-            <option value="tomatoes g">tomatoes g</option>
-            <option value="potatoes g">potatoes g</option>
-            <option value="spanich g">spanich g</option>
+            <option value="chicken">chicken</option>
+            <option value="beef">beef</option>
+            <option value="pork">pork</option>
+            <option value="lettuce">lettuce</option>
+            <option value="tomatoes">tomatoes</option>
+            <option value="potatoes">potatoes</option>
+            <option value="apple">apple</option>
+            <option value="salmon">salmon</option>
+            <option value="shrimp">shrimp</option>
+
         </select>
-    </div>
-    <div class="input group offset-md-5 col-md-2">
-    <label for="quantity">quantity: </label>
-    <input class="form-control" type="number" id="quantity" value="1" min="1" oninput="validity.valid||(value='');">
-    <p class="text-secondary">If you do not enter anything for quantity, it will be set to 50 automatically</p>
-    </div>
-    <button id="dietBtn" class="btn btn-primary" type="button">Add to diet</button>
-    <div>
-        <button class="btn btn-primary btn-lg" onclick="location.href='/';" id="todayBtn">Add to Today</button>
+        
+        <button id="dietBtn" class="form-control btn btn-warning" type="button">Add to diet</button>
     </div>
 
-    </form>
-</body>
+    <p class="text-secondary">If you do not enter anything for quantity, it will be set to 50g automatically</p>
+    </div>
+ <style>
+        .block{
+           background: rgba(255, 255, 255, 0.6)
+        }
+    </style>
+    <div class="container position-absolute top-50 start-50 translate-middle w-50 block">
+        <h2>My Food List</h2>
+        <ul class="list-group list-group-flush w-50 offset-md-3" id="foodList"></ul>
+        
+        <button class="btn btn-warning btn-lg" onclick="location.href='/';" id="todayBtn">Add to My Diets</button>
+    </div>
+</div>

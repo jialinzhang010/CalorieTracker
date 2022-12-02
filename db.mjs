@@ -1,33 +1,27 @@
-import mongoose from 'mongoose'
+import mongoose from 'mongoose';
 
-const UserSchema = new mongoose.Schema({
-    username: {type: String, requried: true},
-    password: {type: String, required: true}
-    // the following keys are used to calculate the recommended calorie intake.
-    
-})
+
 const DietSchema = new mongoose.Schema({
     dietName: {type: String, required: true},
     // diet consists of food
     food: [],
-    id: {type: Number, required: true}
-    // user: {type: mongoose.Schema.Types.ObjectId, ref: "User"},
+    id: {type: Number, required: true},
+    userEmail: {type: String, required: true},
+    totalCalorie: {type: Number, default: 0}
 
-})
+});
 const FoodSchema = new mongoose.Schema({
     // retrieve information of this food from database which stores food information.
     foodName: {type: String, required: true},
     quantity: {type: Number, required: true}
-})
+});
 
 const FoodInfoSchema = new mongoose.Schema({
     name: {type: String, required: true},
-    category: {type: String, required: true},
     calorie: {type: Number, required: true},
     unit: {type: String, required: true}
-})
+});
 
-mongoose.model('User', UserSchema);
 mongoose.model('Diet', DietSchema);
 mongoose.model('Food', FoodSchema);
 mongoose.model('FoodInfo', FoodInfoSchema);

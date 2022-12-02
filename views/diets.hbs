@@ -1,0 +1,28 @@
+
+<style>
+    .block {
+        background: rgba(255, 255, 255, 0.6)
+    }
+</style>
+<div class="container w-25 position-absolute top-50 start-50 translate-middle block">
+    <ul class="list-group list-group-flush w-50 offset-md-3">
+        {{#each diets as |diet|}}
+        <li class="list-group-item bg-transparent"><a class="link-dark"
+                href="/{{diet.dietName}}_{{diet.id}}">{{diet.dietName}}</a></li>
+        {{/each}}
+    </ul>
+</div>
+<footer class="w-50 offset-md-3 fixed-bottom block">
+    <h4>
+        Show diets with calorie intake higher than the number you entered
+    </h4>
+    <form method="POST" action="/filter" class="form-horizontal w-50 offset-md-3" role="form">
+        <div class="input-group w-75 offset-md-2">
+            <input class="form-control w-50" type="number" required name="filter" value="" min="1"
+                placeholder="e.g. 20000">
+            <div class="form-control input-group-text ">kcal</div>
+            <input type="submit" value="Show" class="btn btn-warning btn-sm w-25">
+        </div>
+    </form>
+    
+</footer>

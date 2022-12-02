@@ -1,22 +1,10 @@
-<body>
-
-    <form method="POST" action="/" class="form-horizontal" role="form">
-        <div id="diet"><big>I'm having a <b>new</b> diet!</big></div>
-        <div class="input group offset-md-4 col-md-4">
-            <input class="form-control" id="diet" type="text" required name="dietName" value=""
-                placeholder="please enter the name of your diet">
+<div class="position-absolute top-50 start-50 translate-middle" id="main">
+    <form method="POST" action="/" class="row g-3">
+        <div class="input-group input-group-lg">
+            <label for="diet" class="input-group-text">Diet Name</label>
+            <input class="form-control w-50" id="diet" type="text" required name="dietName" value=""
+                placeholder="breakfast">
+            <input type="submit" value="Add" class="btn btn-warning form-control btn-sm" id="submit">
         </div>
-        <div class="col-auto">
-            <input type="submit" value="Add" class="btn btn-primary">
-        </div>
-
     </form>
-    <div></div>
-<div >
-    <ul class="list-unstyled">
-        {{#each diets as |diet|}}
-        <li><a href="/{{diet.dietName}}_{{diet.id}}">{{diet.dietName}}</a></li>
-        {{/each}}
-    </ul>
 </div>
-</body>

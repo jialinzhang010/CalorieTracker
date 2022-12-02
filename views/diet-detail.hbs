@@ -1,8 +1,15 @@
-<body>
+<style>
+        .block{
+           background: rgba(255, 255, 255, 0.6)
+        }
+    </style>
+<div class="container position-absolute top-50 start-50 translate-middle w-50 block">
     <h2>{{dietName}}</h2>
+    <ul class="list-group list-group-flush w-50 offset-md-3">
     {{#each foods as |food|}}
-    <ul class="list-unstyled">
-    <li>{{food.foodName}} * {{food.quantity}}</li>
-    {{/each}}
+    
+        <li class="list-group-item bg-transparent">{{food.quantity}}g {{food.foodName}}</li>
+        {{/each}}
     </ul>
-</body>
+    <h2>Your calorie intake for this meal is {{calorie}} kcal.</h2>
+</div>
