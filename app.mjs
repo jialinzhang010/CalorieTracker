@@ -1,6 +1,5 @@
 import express from 'express';
 import path from 'path';
-import session from 'express-session';
 import { fileURLToPath } from 'url';
 import './db.mjs';
 import mongoose from 'mongoose';
