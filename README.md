@@ -105,7 +105,7 @@ An Example FoodInfo:
       * I follow the instructions on `https://spoonacular.com/food-api`.
       * I use Spoonacular API to retrieve the information of the food being searched.
       * Initially I intended to use this API to allow users to enter the food in text and retreive the calories from Spoonacular, but doing this will decrease the number of mongoose schema by one, and make me lose a chance to practice implementing the interaction between mongodb and express. Therefore I decide to allow user searching information of food through Spoonacular API as an extra function.
-* 10 points total out of 10 required points
+* 11 points total out of 10 required points
 
 ## [Link to Initial Main Project File](app.mjs) 
 
