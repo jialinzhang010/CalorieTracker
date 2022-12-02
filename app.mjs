@@ -108,9 +108,6 @@ async function calcCalorie(id) {
 
 app.get("/diets", requiresAuth(), async (req, res) => {
     const diets = await Diet.find({ userEmail: req.oidc.user.email });
-    if (diets === []) {
-        return;
-    }
     const filtered = diets.filter(diet => {
         return diet.totalCalorie >= filter;
     });
