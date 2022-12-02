@@ -88,6 +88,7 @@ app.post("/new_diet", async (req, res) => {
         diet.food.push(newFood._id);
         await newFood.save();
     });
+    console.log(diet.food === [])
     if (diet.food === []) {
         return;
     }
