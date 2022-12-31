@@ -2,34 +2,25 @@
 
 ## Overview
 
-Calories Tracker is a web app that will allow users to keep track of their intake of calories and how much they burned everyday. Users can register and login. When signing up, users have to enter their gender, weight, and height. Once they're logged in, they can record how much food they ate, and then the users can view the calculated calories. Then the app will give suggestion to the users as well, such as food bias.
+Calories Tracker is a web app that will allow users to keep track of their intake of calories. Users can register and login. Once they're logged in, they can record how much food they ate, and then the users can view the calculated calories. Users can also search information about food(ingredients) and see the information about calories and nutrients. Auth0 is used for login and registration.
 
 ## Data Model
 
-The application will store Users, Diets, and Food. There is also a database which stores the information of food.
+The application will store Diets, and Food. There is also a database which stores the information of food.
 
 * users can have multiple diets everyday.
 * each Diet consists of different kinds of food(by embedding).
 * The user will not be able to enter texts when selecting food. They will have a list of food to choose. 
 
-An Example User:
-
-```javascript
-{
-  username: "username123",
-  password: "mypassword123",
-}
-```
-
 An Example Diet with Embedded Items:
 
 ```javascript
 {
-  user: // a reference to a User object
-  name: "Breakfast",
+  dietName: "breakfast",
+  food: // an array of id of food
   id: // unique id for diets with the same name
-  food: // an array of food
-  
+  userEmail: "1234@bar.edu",
+  totalCalorie: 25000
 }
 ```
 An Example Food:
@@ -45,7 +36,6 @@ An Example FoodInfo:
 ```javascript
 {
     name: 'beef',
-    category: 'meat',
     calorie: 250.5,   // kcal/100g
     unit: 'g'
 }
@@ -55,31 +45,30 @@ An Example FoodInfo:
 
 
 ## Wireframes
-/sign_up - page for signing up
-
-![sign up](documentation/sign_up.png)
-
-/login - page for login
-
-![login](documentation/login.png)
 
 / - page for showing today's activities
 
-![today](documentation/today.png)
+![front page](documentation/front_page.png)
 
 /new_diet - page for adding a new diet
 
 ![new diet](documentation/new_diet.png)
 
-/diet_type - page for showing a specific diet
+/diets - page for showing all of the diets
 
-![new diet](documentation/breakfast.png)
+![diets](documentation/diets.png)
 
-/suggestion - page for showing total calorie intake and burned today and the suggrestion
+/{diet}_{id} - page for showing
 
-![suggestion](documentation/suggestion.png)
+![new diet](documentation/detail.png)
 
+/info - page for showing the information of user.
 
+![info](documentation/info.png)
+
+/search - page for searching the information of food(ingredients).
+
+![search](documentation/search.png)
 ## Site map
 
 ![site map](documentation/site_map.png)
@@ -91,30 +80,38 @@ An Example FoodInfo:
 3. as a user, I can create a new diet
 4. as a user, I can view all of the diets I've created
 5. as a user, I can view all of the food I've added to an existing diet
-6. as a user, I can add food to an existing diet
-7. as a user, I can view the calorie intake and the customized suggestion on my diet.
+6. as a user, I can view the total calorie intake from all of the diets.
+7. as a user, I can search the information of the an ingredient.
+8. as a user, I can filter the diets to check diets with calorie intake higher than the number you entered.
 
 ## Research Topics
 
-* (5 points) Automated functional testing for all of your routes using Headless Chrome
-    * I will follow the instructions on `https://developer.chrome.com/blog/headless-karma-mocha-chai/`.
-    * Headless Chrome is a way to run the Chrome browser without the full browser UI. 
-    * I'm using Headless Chrome because my JavaScript tests will be executed in the same environment as users of your site.
-    * I will use Karma as a runner and Mocha+Chai for authoring tests. 
+* (3 points) Configuration management
+    * I follow the instructions on `https://www.npmjs.com/package/dotenv`.
+    * Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env. Storing configuration in the environment separate from code is based on The Twelve-Factor App methodology.
+    * I'm using Dotenv to load the information of authentication.
 * (3 points) Perform client side form validation using custom JavaScript or JavaScript library
     * Client side form validation ensures all required form controls are filled out, in the correct format before submitting data to the server.
     * Client side form validation helps ensure data submitted matches the requirements set forth in the various form controls.
     * The user can fix the invalid data straight away to prevent sending bad data to server.
 * (2 points) Use a CSS framework or UI toolkit.
-    * I will use Bootstrap to design the layout of the app.
+    * I use Bootstrap to design the layout of the app.
     * Bootstrap is a development framework that helps create beautiful, responseive layouts using human-friendly HTML.
-
-    10 points total out of 10 required points
+* (3 points) Use two external API.
+    * (1 point) Auth0
+      * I use Auth0 to do authentication. The web page is `https://auth0.com/`.
+      * This API simplies the process of authentication and can easily add API provided by google for future development.
+    * (2 points) Spoonacular
+      * I follow the instructions on `https://spoonacular.com/food-api`.
+      * I use Spoonacular API to retrieve the information of the food being searched.
+      * Initially I intended to use this API to allow users to enter the food in text and retreive the calories from Spoonacular, but doing this will decrease the number of mongoose schema by one, and make me lose a chance to practice implementing the interaction between mongodb and express. Therefore I decide to allow user searching information of food through Spoonacular API as an extra function.
+* 11 points total out of 10 required points
 
 ## [Link to Initial Main Project File](app.mjs) 
 
 ## Annotations / References Used
 
 1. [Client-side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
-2. [tutorial on Headless Chrome](https://developer.chrome.com/blog/headless-karma-mocha-chai/)
+2. [Auth0](https://auth0.com/)
 3. [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/)
+4. [Spoonacular](https://spoonacular.com/food-api)

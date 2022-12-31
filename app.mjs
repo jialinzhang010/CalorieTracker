@@ -1,6 +1,5 @@
 import express from 'express';
 import path from 'path';
-import session from 'express-session';
 import { fileURLToPath } from 'url';
 import './db.mjs';
 import mongoose from 'mongoose';
@@ -116,10 +115,9 @@ app.get("/diets", requiresAuth(), async (req, res) => {
     res.render("diets", { diets: filtered, user: req.oidc.user });
 });
 
-app.post("/diets", async (req, res) => {
+app.post("/diets", (req, res) => {
     filter = req.body.filter;
     res.redirect("/diets");
-    
 });
 
 app.get("/search", requiresAuth(), (req, res) => {

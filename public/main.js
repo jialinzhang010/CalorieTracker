@@ -10,7 +10,7 @@ function onClick() {
   }
   const food = document.getElementById("food").value;
   li.textContent = quantity + "g" + " * " + food;
-  const foodDetail = {foodName: food, quantity: quantity};
+  const foodDetail = { foodName: food, quantity: quantity };
   data.diets.push(foodDetail);
   li.classList.add("list-group-item");
   li.classList.add("bg-transparent");
@@ -18,16 +18,16 @@ function onClick() {
   foodList.appendChild(li);
 }
 function inputOnClick() {
-  fetch('/new_diet', {
+  fetch("/new_diet", {
     method: "POST",
-    headers: {'Content-Type': 'application/json'},
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
 }
 
 function main() {
   const btn = document.querySelector("#dietBtn");
-  const inputBtn = document.querySelector('#todayBtn');
+  const inputBtn = document.querySelector("#todayBtn");
   btn.addEventListener("click", onClick);
   inputBtn.addEventListener("click", inputOnClick);
 }
