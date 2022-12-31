@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", main);
 let food;
 let quantity;
-const data = {diets : []};
+let data = {diets : []};
 function onClick() {
   const li = document.createElement("li");
   let quantity = document.getElementById("quantity").value;
@@ -22,13 +22,14 @@ function inputOnClick() {
     method: "POST",
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(data)
-  });
+  })
 }
+
 function main() {
   const btn = document.querySelector("#dietBtn");
   const inputBtn = document.querySelector('#todayBtn');
   btn.addEventListener("click", onClick);
   inputBtn.addEventListener("click", inputOnClick);
 }
-export {food, quantity};
+export {food, quantity}
 main();
